@@ -22,6 +22,19 @@ body {
     margin: 0;
     padding: 0;
 }
+
+.nav {
+    background-color: white;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    z-index: 99;
+    width: 100%;
+}
  
 .nav ul {
     list-style: none;
@@ -35,17 +48,14 @@ body {
     line-height: 40px;
     height: 40px;
     width: 150px;
-    border-top: 3px solid black;
     display: inline-block;
 }
  
 .nav a {
     text-decoration: none;
-    color: black;
     display: block;
 
     background-size: 100% 200%;
-    background-image: linear-gradient(to bottom, white 50%, black 50%);
     -webkit-transition: background-position .3s, color .3s;
     -moz-transition: background-position .3s, color .3s;
     transition: background-position .3s, color .3s;
@@ -53,11 +63,17 @@ body {
  
 .nav a:hover {
     background-position: 0 -100%;
-    color: white;
 }
- 
-.nav a.active {
-    background-color: #fff;
-    color: #444;
-    cursor: default;
+
+#mainSection {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+}
+
+#aboutSection {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    background-color: black;
 }

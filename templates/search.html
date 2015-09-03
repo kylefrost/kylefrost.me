@@ -3,10 +3,113 @@
     <head>
         <title>K|F</title>
         {% include 'head.html' %}
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <style>
+            #middleStuff {
+                left: 50%;
+                top: 45%;
+                transform: translate(-50%, -50%);
+                -webkit-transform: tranlate(-50%, -50%);
+                -moz-transform: translate(-50%, -50%);
+                -ms-transform: translate(-50%, -50%);
+                -o-transform: translate(-50%, -50%);
+                position: absolute;
+                width: 100%;
+            }
+            
+            #name {
+                position: relative;
+                letter-spacing: -3px;
+                font-size: 80pt;
+                text-align: center;
+            }
+            
+            input:focus,
+            select:focus,
+            textarea:focus,
+            button:focus {
+                outline: none;
+            }
+            
+            #searchbar {
+                padding: 0px;
+                padding-left: 10px;
+                position: relative;
+                height: 35px;
+                width: 500px;
+                font-size: 12pt;
+                line-height: 35px;
+                left: 50%;
+                -webkit-transform: translateX(-50%);
+                transform: translateX(-50%);
+                margin: 1px;
+            }
+            
+            #searchbar:hover {
+                margin: 2.5px;
+                margin-left: 1px;
+                border: 0.5px solid #959595;
+            }
+            
+            #searchbar:focus {
+                margin: 2.5px;
+                margin-left: 1px;
+                border: 0.5px solid #4285f4;
+            }
+            
+            .autocomplete-suggestions { border: 1px solid #999; background: #FFF; overflow: auto; }
+            .autocomplete-suggestion { padding: 2px 5px; white-space: nowrap; overflow: hidden; }
+            .autocomplete-selected { background: #F0F0F0; }
+            .autocomplete-suggestions strong { font-weight: normal; color: #3399FF; }
+            .autocomplete-group { padding: 2px 5px; }
+            .autocomplete-group strong { display: block; border-bottom: 1px solid #000; }
+            
+            #buttonContainer {
+                position: relative;
+                left: 50%;
+                -webkit-transform: translateX(-50%);
+                transform: translateX(-50%);
+            }
+            
+            .button {
+                text-align: center;
+                width: 150px;
+                height: 50px;
+            }
+        </style>
     </head>
     <body>
-        <div id="wrap" style="letter-spacing: -0.6vw;font-size: 15vw;text-align: center;">
-            <span style="color: #4285f4;">F</span><span style="color: #ea4335;">r</span><span style="color: #fbbc05;">o</span><span style="color: #4285f4;">s</span><span style="color: #34a853;">t</span><span style="color: #ea4335;">.</span>
+        <div id="middleStuff">
+            <div id="name">
+                <span style="color: #4285f4;">F</span><span style="color: #ea4335;">r</span><span style="color: #fbbc05;">o</span><span style="color: #4285f4;">s</span><span style="color: #34a853;">t</span><span style="color: #ea4335;">.</span>
+            </div>
+            <br>
+            <input type="text" id="searchbar">
+            <br>
+<!--
+            <div id="buttonContainer">
+                <input type="button" class="button" value="Frost Search"><input type="button" class="button" value="I'm Feeling Lucky">
+            </div>
+-->
         </div>
+        <script src="{{ url_for('static', filename='autocomplete/jquery.autocomplete.min.js') }}"></script>
+        <script>
+            var auto = [
+                "about",
+                "skills",
+                "projects",
+                "contact",
+                "blog",
+                "fun facts"
+            ];
+            
+            $("#searchbar").autocomplete({
+                lookup: auto,
+                onSelect: function(suggestion) {
+                    this.val = suggestion;
+                }
+            }); 
+
+        </script>
     </body>
 </html>

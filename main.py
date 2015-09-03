@@ -3,7 +3,7 @@ import random, datetime
 
 app = Flask(__name__)
 
-# Load Index page 
+# Load Index Page 
 @app.route('/')
 def index():
     color_array = ["#B71C1C", # DARK RED
@@ -20,6 +20,11 @@ def index():
                    "#263238"] # DARK BLUE GRAY
     color_choice = random.randrange(0, len(color_array) - 1)
     return render_template("index.html", color=color_array[color_choice], hovercolor="white", year=datetime.datetime.now().year)
+    
+# Load Search Page
+@app.route('/search')
+def search():
+    return render_template("search.html")
     
 # Run Flask app on load
 if __name__ == "__main__":
